@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+    <section class="homepage">
+        <section class="homepage-intro">
+                <img src="{{url_for('static', filename='shoe.jpg')}}" id="home-pic1"/>
+                <img src="{{url_for('static', filename='headphones.jpg')}}" id="home-pic2"/>
+                <img src="{{url_for('static', filename='earing.jpg')}}" id="home-pic3"/>
+                <h1 id="over"><i>Quality & Class</i></h1>
+        </section>
+
+        <section class="homepage-products">
+            <div class="populartext-container">
+                <h2>Popular Products</h2>
+            </div>
+        </section>
+
+        <section class="homepage-ending">
+            <section class="card-deck">
+                {% for product in products %}
+                    <a href="{{ url_for('auth.product', titl=product.name, price=product.price, desc=product.description) }}">
+                        <section class="card">
+                            <section class="card-image"><img src={{product.image}} class="cimage"></section>
+                            <section class="card-heading"><b>{{ product.name }}</b></section>
+                            <section class="card-main">{{ product.description }}<br><br>PRICE: <b>${{ product.price }}</b></section>
+                        </section>
+                    </a>
+                {% endfor %}
+            </section>
+        </section>
+        <script>
+            let pic1 = document.getElementById('home-pic1');
+            let pic2 = document.getElementById('home-pic2');
+            let pic3 = document.getElementById('home-pic3');
+            counter = 0;
+            window.setInterval(change, 3000);
+            function change() {
+                if (counter % 3==0) {
+                    pic1.style.display = "none";
+                    pic3.style.display = "none";
+                    pic2.style.display = "inline";
+                } else if (counter % 3==1) {
+                    pic1.style.display = "inline";
+                    pic2.style.display = "none";
+                    pic3.style.display = "none";
+                } else {
+                    pic1.style.display = "none";
+                    pic2.style.display = "none";
+                    pic3.style.display = "inline";
+                }console.log(counter);
+                counter +=1;
+            }
+        </script>
+    </section>
+{% endblock %}

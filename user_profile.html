@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+
+
+{% block content %}
+    <section class="profile-page">
+        <section class="user-info">
+            <h2>Welcome back <em>{{text}}</em></h2>
+            <hr>
+            <h3>You have {{track}} items in your cart</h3>
+        </section>
+    </section>
+   <script>
+        let sign = document.getElementById('signbut')
+        let log = document.getElementById('logbut')
+        let out = document.getElementById('outbut')
+        function hide() {
+            sign.style.display = "none";
+            log.style.display = "none";
+            out.style.display = "inline";
+        }
+        window.onload = function() {
+            hide();
+        };
+   </script>
+{% endblock %}

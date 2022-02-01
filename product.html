@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{text}}
+{% endblock %}
+
+{% block content %}
+    <section class="product-title"> 
+        <h1>{{ text }}</h1>
+    </section>
+    <section class="product-container">
+        <section class="product-cols">
+            <section class="product-image">
+                <img src="{{url_for('static', filename='headphones.jpg')}}" id="product-image-display"/>
+            </section>
+        </section>
+        <section class="product-cols">
+            <section class="product-text">
+                <p>{{ odesc }}. Premium value. You won't find better quality anywhere else!</p>
+            </section>
+        </section>
+        <section class="product-price">
+            <p>Price: ${{ obj }}</p>
+        </section>
+        <section>
+            <button class="buy-but">Buy Now</button>
+        </section>
+    </section>
+{% endblock %}
